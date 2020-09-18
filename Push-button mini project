@@ -1,19 +1,23 @@
-int sensorPin = A3;
-int LED = 9;
-int sensorValue = 0;
+const int buttonPin = 2;   
+const int ledPin =  13;  
+
+int buttonState = 0;        
 
 void setup()
 {
-  pinMode(LED, OUTPUT);
+  pinMode(ledPin, OUTPUT);
+  pinMode(buttonPin, INPUT);
 }
 
-void loop
+void loop() 
 {
-  int pot = analogRead(sensorPin);
-
-  pot = map(pot, 0, 1023, 0, 255);
-
-  analogWrite(LED, pot);
-
-  delay(250);
+  buttonState = digitalRead(buttonPin);
+  if (buttonState == HIGH) 
+  {
+    digitalWrite(ledPin, HIGH);
+  } 
+  else 
+  {
+    digitalWrite(ledPin, LOW);
+  }
 }
